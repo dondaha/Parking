@@ -6,7 +6,7 @@
     <arg name="baud_rate" default="115200"/>
     <arg name="view_contour" default="True"/>
     <arg name="port" default="/dev/ttyUSB0"/>
-    <arg name="ids" default="['5', '6', '9']"/>
+    <arg name="ids" default="['7']"/>
 
     <node pkg="parking" type="camera.py" name="camera">
         <param name="cam" type="int" value="$(arg cam)"/>

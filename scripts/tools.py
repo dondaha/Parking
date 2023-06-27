@@ -166,6 +166,7 @@ def preprocess(frame, img_sz):
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     _, binary = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
     contours, _ = cv2.findContours(binary, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    contours = list(contours)
     contours.sort(key=lambda cnt: cv2.contourArea(cnt), reverse=True)
 
     i, count = 0, 0
@@ -230,6 +231,7 @@ def preprocess(frame, img_sz):
 
     _, areas = cv2.threshold(areas, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
     area_contours, _ = cv2.findContours(areas, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    area_contours = list(area_contours)
     area_contours.sort(key=lambda cnt: cv2.contourArea(cnt), reverse=True)
 
     area_contours = [contour.squeeze() for contour in area_contours]
